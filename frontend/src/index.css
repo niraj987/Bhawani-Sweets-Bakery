@@ -1,0 +1,346 @@
+@import "tailwindcss";
+
+:root {
+  /* Calming Artisan Bakery Color Theory */
+  --bg-main: #FAF8F5;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F3EFEA;
+  --text-main: #28201C;
+  --text-muted: #6E6259;
+  --text-subtle: #988B80;
+  
+  --gold: #C5943B;
+  --gold-light: #E6B767;
+  --gold-subtle: rgba(197, 148, 59, 0.12);
+  --rose: #CB766F;
+  --rose-light: #EBB0AA;
+  --sage: #758A73;
+  --cream: #FFFDF9;
+  
+  --border-calm: rgba(210, 195, 180, 0.55);
+  --border-focus: #C5943B;
+  
+  /* Clearly visible, elegant frosted glass styling */
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(215, 202, 188, 0.75);
+  --glass-shadow: 0 12px 36px -6px rgba(70, 50, 35, 0.08), 0 2px 6px rgba(70, 50, 35, 0.04);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: #F3EFEA; }
+::-webkit-scrollbar-thumb { background: #D5C2B0; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ── Clearly Visible Calming Frosted Glassmorphism ── */
+.glass {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-dark {
+  background: rgba(36, 27, 23, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(197, 148, 59, 0.45);
+  box-shadow: 0 20px 50px rgba(25, 18, 14, 0.25);
+  color: #fff;
+}
+
+/* ── Transparent Background for Ambient Visibility ── */
+.water-bg {
+  background: transparent;
+  min-height: 100vh;
+}
+
+/* ── Section Titles ── */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+/* ── Shimmer Text (Refined Warm Gold) ── */
+@keyframes shimmer-warm {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer-text {
+  background: linear-gradient(90deg, #A87828 0%, #C5943B 25%, #E8BC6E 50%, #C5943B 75%, #A87828 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-warm 5s ease-in-out infinite;
+}
+
+/* ── CSS3 Infinite Loop Graphic & Animations ── */
+.css3-infinite-loop-container {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.css3-loop-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid rgba(197, 148, 59, 0.2);
+  border-top-color: var(--gold);
+  border-right-color: var(--rose);
+  animation: css3-infinite-spin 1.4s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+}
+
+.css3-loop-orb {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold);
+  top: 2px;
+  left: 38px;
+  animation: css3-infinite-orbit 1.4s linear infinite;
+}
+
+.css3-loop-orb-two {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 2px dashed rgba(203, 118, 111, 0.4);
+  animation: css3-infinite-reverse-spin 2.2s linear infinite;
+}
+
+.css3-loop-center-icon {
+  font-size: 28px;
+  animation: css3-loop-pulse 2s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes css3-infinite-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes css3-infinite-reverse-spin {
+  0%   { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes css3-infinite-orbit {
+  0%   { transform: rotate(0deg) translateX(36px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(36px) rotate(-360deg); }
+}
+
+@keyframes css3-loop-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+/* ── Continuous CSS3 Infinite Loop Ticker Ribbon ── */
+.infinite-loop-marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  user-select: none;
+}
+
+.infinite-loop-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  min-width: 100%;
+  animation: css3-marquee-scroll 32s linear infinite;
+}
+
+.infinite-loop-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes css3-marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Dynamic Train Ticker (Moving Left-to-Right in One Line) ── */
+@keyframes train-move-ltr {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.train-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: train-move-ltr 30s linear infinite;
+  will-change: transform;
+}
+
+.train-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Calm Cake Tiles with Interactive Golden Glow Hover Effect ── */
+.cake-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(224, 214, 202, 0.85);
+  border-radius: 28px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 28px -6px rgba(60, 45, 30, 0.06), 0 1px 3px rgba(60, 45, 30, 0.03);
+}
+
+.cake-card:hover {
+  background: #FFFFFF;
+  transform: translateY(-8px);
+  border-color: rgba(197, 148, 59, 0.55);
+  box-shadow: 0 22px 48px -10px rgba(197, 148, 59, 0.22), 0 0 0 1px rgba(197, 148, 59, 0.35);
+}
+
+/* ── Ambient Background Sparkles ── */
+.ambient-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.ambient-sparkle-dot {
+  position: absolute;
+  bottom: -10px;
+  background: rgba(197, 148, 59, 0.4);
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: ambient-sparkle-float linear infinite;
+}
+@keyframes ambient-sparkle-float {
+  0%   { transform: translateY(0) scale(0.6); opacity: 0; }
+  25%  { opacity: 0.7; }
+  75%  { opacity: 0.7; }
+  100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+}
+
+/* ── Inputs ── */
+.fancy-input {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(210, 195, 180, 0.7);
+  border-radius: 16px;
+  padding: 14px 20px;
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  width: 100%;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+.fancy-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(197, 148, 59, 0.18);
+}
+.fancy-input::placeholder { color: var(--text-subtle); }
+
+/* ── Buttons ── */
+.btn-primary {
+  background: linear-gradient(135deg, #C5943B 0%, #D8827B 100%);
+  color: #FFFFFF;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 13px 32px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+  box-shadow: 0 8px 22px -3px rgba(197, 148, 59, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(197, 148, 59, 0.45);
+  filter: brightness(1.04);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* ── Glow Button ── */
+@keyframes calm-glow {
+  0%, 100% { box-shadow: 0 8px 22px -3px rgba(197, 148, 59, 0.35); }
+  50%      { box-shadow: 0 12px 32px 0px rgba(197, 148, 59, 0.5); }
+}
+.glow-btn {
+  animation: calm-glow 3s ease-in-out infinite;
+}
+
+/* ── Nav Links ── */
+.nav-link {
+  position: relative;
+  color: var(--text-main);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.25s;
+  text-decoration: none;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width 0.25s;
+}
+.nav-link:hover { color: var(--gold); }
+.nav-link:hover::after { width: 100%; }
+
+/* ── Water Tile Ripple ── */
+.water-tile {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* ── Popup Overlay ── */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 20, 16, 0.55);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Hero Canvas ── */
+#three-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.6;
+}
