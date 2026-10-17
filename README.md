@@ -1,6 +1,6 @@
 # 🎂 Bhawani Sweets & Bakery
 
-> **Artisanal Cake Studio, Handcrafted Desi Ghee Sweets & Dairy Delivery Platform**  
+> ** Cake Studio, Handcrafted Desi Ghee Sweets & Dairy Delivery Platform**  
 > Built with modern React 19, Tailwind CSS, GSAP, Node.js, Express, and SQLite.
 
 ---
